@@ -19,9 +19,30 @@ from gem5.components.processors.cpu_types import CPUTypes
 from gem5.isas import ISA
 from gem5.resources.resource import BinaryResource
 from gem5.simulate.simulator import Simulator
+from m5.objects import BiModeBP, LocalBP, TournamentBP
 import sys
 import csv
 import time
+
+def get_branch_predictor(bp_type: str):
+    """
+    Return the branch predictor object based on name.
+    Current support:
+        - bimode
+        - local
+        - tournament
+    """
+    if bp_type.lower() == "bimode":
+        return BiModeBP()
+    elif bp_type.lower() == "local":
+        return LocalBP()
+    elif bp_type.lower() == "tournament":
+        return TournamentBP()
+    else:
+        print(f"Branch predictor {bp_type} not supported")
+        sys.exit(1)
+
+
 def get_simulator(board:any) -> any:
     """
     return the simulator
@@ -146,26 +167,29 @@ def get_isa(isa_type:str) -> any:
         print(f"isa type {isa_type} not supported")
         sys.exit()
 
-def get_processor(processor_type:str, cpu_type:str, num_cores:int, isa_type:str) -> any:
-    """
-    return a simple processor with above mentioned features
-    current support for
-        1. SIMPLE
-        2. O3CPU (not tested, depreacted)
-    supports only simple processor, beacuse it is simple
-    """
-    _cpu_type=get_cpu_type(cpu_type)
+def get_processor(processor_type: str, cpu_type: str, num_cores: int, isa_type: str, bp_type: str = None) -> any:
+    _cpu_type = get_cpu_type(cpu_type)
     _isa = get_isa(isa_type)
-    if processor_type=="SIMPLE":
-        return SimpleProcessor(
-            cpu_type=_cpu_type, 
-            num_cores=num_cores, 
-            isa=_isa
-        )
-    # if processor_type=="O3CPU":
-    #     return DerivO3CPU(isa=_isa, num_cores=num_cores)
+
+    if processor_type == "SIMPLE":
+        if _cpu_type == CPUTypes.O3 and bp_type:
+            bp = get_branch_predictor(bp_type)
+            return SimpleProcessor(
+                cpu_type=_cpu_type,
+                num_cores=num_cores,
+                isa=_isa,
+                branch_predictor=bp   # ✅ pass predictor into core
+            )
+        else:
+            return SimpleProcessor(
+                cpu_type=_cpu_type,
+                num_cores=num_cores,
+                isa=_isa,
+            )
     else:
         print(f"processor type {processor_type} not supported")
+        sys.exit(1)
+
 
 def prepare_simulator(
         processor_type:str,
@@ -177,7 +201,8 @@ def prepare_simulator(
         cache_type:str,
         cpu_freq:str,
         binary_filename:str,
-        type_of_workload:str
+        type_of_workload:str,
+        bp_type:str = None
     ) -> any:
     """
     Breif:
@@ -203,7 +228,7 @@ def prepare_simulator(
     Waarnings:
         make sure to use within the boundaries defined above
     """
-    processor = get_processor(processor_type, cpu_type=cpu_type, num_cores=num_cores, isa_type=isa_type)
+    processor = get_processor(processor_type, cpu_type=cpu_type, num_cores=num_cores, isa_type=isa_type, bp_type=bp_type)
 
     cache_hierarchy = get_cache_hierarchy(cache_type)
     memory = get_memory(mem_type, mem_size)
@@ -395,7 +420,8 @@ def args_to_dict(args):
         "cache_type":args.cache_type,
         "cpu_freq":args.cpu_freq,
         "binary_filename":"mm",
-        "type_of_workload":"SE"
+        "type_of_workload":"SE",
+        "bp_type":args.bp_type
     }
 
     return info
@@ -409,7 +435,7 @@ parser.add_argument("--cache_type", type=str, default="MESITwoLevelCacheHierarch
 parser.add_argument("--mem_type", type=str, default="DDR3", help="provide the type of memory")
 parser.add_argument("--mem_size", type=str, default="2GiB", help="provide the size of the memory")
 parser.add_argument("--mode", type=str, default="a", help="specify the mode of saving")
-
+parser.add_argument("--bp_type", type=str, default="tournament", help="Branch predictor: bimode/local/tournament")
 args = parser.parse_args()
 
 mode=args.mode
@@ -425,5 +451,6 @@ run_simulation(
     args_dict["cache_type"],
     args_dict["cpu_freq"],
     args_dict["binary_filename"],
-    args_dict["type_of_workload"]
+    args_dict["type_of_workload"],
+    args_dict["bp_type"]
 )
