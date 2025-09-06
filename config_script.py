@@ -7,7 +7,7 @@ from gem5.components.memory.single_channel import (
 )
 from gem5.components.memory.multi_channel import DualChannelDDR3_1600
 import argparse
-from gem5.components.processors.simple_processor import SimpleProcessor
+from gem5.components.processors.simple_processor import SimpleProcessor, DeriveO3CPU
 # from gem5.components.processors.o3_cpu import DerivO3CPU
 from gem5.components.cachehierarchies.classic.private_l1_cache_hierarchy import (
     PrivateL1CacheHierarchy,
@@ -23,6 +23,7 @@ from m5.objects import BiModeBP, LocalBP, TournamentBP
 import sys
 import csv
 import time
+import json
 
 def get_branch_predictor(bp_type: str):
     """
@@ -167,24 +168,25 @@ def get_isa(isa_type:str) -> any:
         print(f"isa type {isa_type} not supported")
         sys.exit()
 
-def get_processor(processor_type: str, cpu_type: str, num_cores: int, isa_type: str, bp_type: str = None) -> any:
+def get_processor(processor_type: str, cpu_type: str, num_cores: int, isa_type: str, bp_type: str = None) -> SimpleProcessor:
     _cpu_type = get_cpu_type(cpu_type)
     _isa = get_isa(isa_type)
 
-    if processor_type == "SIMPLE":
+    if processor_type.upper() == "SIMPLE":
         if _cpu_type == CPUTypes.O3 and bp_type:
-            bp = get_branch_predictor(bp_type)
+            cpu = DeriveO3CPU()             # ✅ instantiate O3 CPU
+            cpu.branch_predictor = get_branch_predictor(bp_type)
             return SimpleProcessor(
-                cpu_type=_cpu_type,
+                cpu_type=cpu,              # ✅ pass CPU object
                 num_cores=num_cores,
-                isa=_isa,
-                branch_predictor=bp   # ✅ pass predictor into core
+                isa=_isa
             )
+
         else:
             return SimpleProcessor(
                 cpu_type=_cpu_type,
                 num_cores=num_cores,
-                isa=_isa,
+                isa=_isa
             )
     else:
         print(f"processor type {processor_type} not supported")
@@ -260,7 +262,8 @@ def run_simulation(
         cache_type:str,
         cpu_freq:str,
         binary_filename:str,
-        type_of_workload:str
+        type_of_workload:str,
+        bp_type:str = None
     ) -> list:
     """
     simulator runner
@@ -286,7 +289,8 @@ def run_simulation(
         cache_type,
         cpu_freq,
         binary_filename,
-        type_of_workload
+        type_of_workload,
+        bp_type
     )
     
     _run_simulator(simulator)
@@ -362,6 +366,7 @@ def run_multiple_simulation(
         cpu_freqs:list[str],
         binary_filename:str,
         type_of_workload:str,
+        bp_type:str
     ) -> list:
     """
     Args:
@@ -398,7 +403,8 @@ def run_multiple_simulation(
                     cache_type,
                     cpu_freq,
                     binary_filename,
-                    type_of_workload
+                    type_of_workload,
+                    bp_type
                 )
 
                 ipc, sim_seconds = get_stats("m5out/stats.txt")
@@ -428,18 +434,12 @@ def args_to_dict(args):
     
 
 parser = argparse.ArgumentParser(description="pass the required information to set the memory up")
-
-parser.add_argument("--cpu_type", type=str, default="O3", help="provide the type of CPU")
-parser.add_argument("--cpu_freq", type=str, default="600MHz", help="clock frequency" )
-parser.add_argument("--cache_type", type=str, default="MESITwoLevelCacheHierarchy", help="provide the cache type")
-parser.add_argument("--mem_type", type=str, default="DDR3", help="provide the type of memory")
-parser.add_argument("--mem_size", type=str, default="2GiB", help="provide the size of the memory")
-parser.add_argument("--mode", type=str, default="a", help="specify the mode of saving")
-parser.add_argument("--bp_type", type=str, default="tournament", help="Branch predictor: bimode/local/tournament")
+parser.add_argument("--config", type=str, default="config.json", help="Path to JSON config file")
 args = parser.parse_args()
 
-mode=args.mode
-args_dict = args_to_dict(args)
+# load JSON config
+with open(args.config, "r") as f:
+    args_dict = json.load(f)
 
 run_simulation(
     args_dict["processor_type"],
