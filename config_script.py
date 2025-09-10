@@ -7,8 +7,8 @@ from gem5.components.memory.single_channel import (
 )
 from gem5.components.memory.multi_channel import DualChannelDDR3_1600
 import argparse
-from gem5.components.processors.simple_processor import SimpleProcessor, DeriveO3CPU
-# from gem5.components.processors.o3_cpu import DerivO3CPU
+from gem5.components.processors.simple_processor import SimpleProcessor
+from m5.objects import DerivO3CPU
 from gem5.components.cachehierarchies.classic.private_l1_cache_hierarchy import (
     PrivateL1CacheHierarchy,
 )
@@ -168,26 +168,35 @@ def get_isa(isa_type:str) -> any:
         print(f"isa type {isa_type} not supported")
         sys.exit()
 
-def get_processor(processor_type: str, cpu_type: str, num_cores: int, isa_type: str, bp_type: str = None) -> SimpleProcessor:
+def get_processor(
+    processor_type: str,
+    cpu_type: str,
+    num_cores: int,
+    isa_type: str,
+    bp_type: str = None,
+) -> SimpleProcessor:
     _cpu_type = get_cpu_type(cpu_type)
     _isa = get_isa(isa_type)
 
     if processor_type.upper() == "SIMPLE":
-        if _cpu_type == CPUTypes.O3 and bp_type:
-            cpu = DeriveO3CPU()             # ✅ instantiate O3 CPU
-            cpu.branch_predictor = get_branch_predictor(bp_type)
-            return SimpleProcessor(
-                cpu_type=cpu,              # ✅ pass CPU object
-                num_cores=num_cores,
-                isa=_isa
-            )
+        processor = SimpleProcessor(
+            cpu_type=_cpu_type, num_cores=num_cores, isa=_isa
+        )
 
-        else:
-            return SimpleProcessor(
-                cpu_type=_cpu_type,
-                num_cores=num_cores,
-                isa=_isa
-            )
+        if _cpu_type == CPUTypes.O3 and bp_type:
+            for core in processor.cores:
+                # Create a new branch predictor for the core.
+                branch_predictor = get_branch_predictor(bp_type)
+                
+                # **THE FIX**: Manually set numThreads to resolve the proxy.
+                # In SE mode, each O3 core has one thread.
+                branch_predictor.numThreads = 1
+                
+                # Assign the fully configured predictor to the core.
+                core.branch_predictor = branch_predictor
+
+        return processor
+
     else:
         print(f"processor type {processor_type} not supported")
         sys.exit(1)

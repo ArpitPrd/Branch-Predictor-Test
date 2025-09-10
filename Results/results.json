@@ -1,0 +1,518 @@
+{
+    "MultiperspectivePerceptron8KB": {
+        "QSort": {
+            "run_1": {
+                "sim_seconds": 0.118317,
+                "committed_instructions": 100020754.0,
+                "ipc": 0.422682,
+                "branch_predicted": 19666922.0,
+                "branch_squashes": 0.0,
+                "branch_mispredicted": 528405.0,
+                "total_branches": null,
+                "l1d_accesses": null,
+                "l1i_accesses": null,
+                "rob_occupancy": null,
+                "iq_utilization": null,
+                "mispred_recovery_cycles": null,
+                "branch_misprediction_rate": 2.686770202271611
+            },
+            "run_2": {
+                "sim_seconds": 0.118317,
+                "committed_instructions": 100020754.0,
+                "ipc": 0.422682,
+                "branch_predicted": 19666922.0,
+                "branch_squashes": 0.0,
+                "branch_mispredicted": 528405.0,
+                "total_branches": null,
+                "l1d_accesses": null,
+                "l1i_accesses": null,
+                "rob_occupancy": null,
+                "iq_utilization": null,
+                "mispred_recovery_cycles": null,
+                "branch_misprediction_rate": 2.686770202271611
+            },
+            "run_3": {
+                "sim_seconds": 0.118317,
+                "committed_instructions": 100020754.0,
+                "ipc": 0.422682,
+                "branch_predicted": 19666922.0,
+                "branch_squashes": 0.0,
+                "branch_mispredicted": 528405.0,
+                "total_branches": null,
+                "l1d_accesses": null,
+                "l1i_accesses": null,
+                "rob_occupancy": null,
+                "iq_utilization": null,
+                "mispred_recovery_cycles": null,
+                "branch_misprediction_rate": 2.686770202271611
+            }
+        },
+        "BasicMath": {
+            "run_1": {
+                "sim_seconds": 0.054848,
+                "committed_instructions": 48834459.0,
+                "ipc": 0.445184,
+                "branch_predicted": 10110388.0,
+                "branch_squashes": 0.0,
+                "branch_mispredicted": 88274.0,
+                "total_branches": null,
+                "l1d_accesses": null,
+                "l1i_accesses": null,
+                "rob_occupancy": null,
+                "iq_utilization": null,
+                "mispred_recovery_cycles": null,
+                "branch_misprediction_rate": 0.8731020016244678
+            },
+            "run_2": {
+                "sim_seconds": 0.054848,
+                "committed_instructions": 48834459.0,
+                "ipc": 0.445184,
+                "branch_predicted": 10110388.0,
+                "branch_squashes": 0.0,
+                "branch_mispredicted": 88274.0,
+                "total_branches": null,
+                "l1d_accesses": null,
+                "l1i_accesses": null,
+                "rob_occupancy": null,
+                "iq_utilization": null,
+                "mispred_recovery_cycles": null,
+                "branch_misprediction_rate": 0.8731020016244678
+            },
+            "run_3": {
+                "sim_seconds": 0.054848,
+                "committed_instructions": 48834459.0,
+                "ipc": 0.445184,
+                "branch_predicted": 10110388.0,
+                "branch_squashes": 0.0,
+                "branch_mispredicted": 88274.0,
+                "total_branches": null,
+                "l1d_accesses": null,
+                "l1i_accesses": null,
+                "rob_occupancy": null,
+                "iq_utilization": null,
+                "mispred_recovery_cycles": null,
+                "branch_misprediction_rate": 0.8731020016244678
+            }
+        }
+    },
+    "Baseline": {
+        "QSort": {
+            "run_1": {
+                "sim_seconds": 0.118317,
+                "committed_instructions": 100020754.0,
+                "ipc": 0.422682,
+                "branch_predicted": null,
+                "branch_mispredicted": null,
+                "branch_squashes": null,
+                "total_branches": null,
+                "l1d_accesses": null,
+                "l1i_accesses": null,
+                "rob_occupancy": null,
+                "iq_utilization": null,
+                "mispred_recovery_cycles": null,
+                "branch_misprediction_rate": 0
+            }
+        },
+        "BasicMath": {
+            "run_1": {
+                "sim_seconds": 0.054848,
+                "committed_instructions": 48834459.0,
+                "ipc": 0.445184,
+                "branch_predicted": null,
+                "branch_mispredicted": null,
+                "branch_squashes": null,
+                "total_branches": null,
+                "l1d_accesses": null,
+                "l1i_accesses": null,
+                "rob_occupancy": null,
+                "iq_utilization": null,
+                "mispred_recovery_cycles": null,
+                "branch_misprediction_rate": 0
+            }
+        }
+    },
+    "BiModeBP": {
+        "QSort": {
+            "run_1": {
+                "sim_seconds": 0.118317,
+                "committed_instructions": 100020754.0,
+                "ipc": 0.422682,
+                "branch_predicted": 19666922.0,
+                "branch_squashes": 0.0,
+                "branch_mispredicted": 658325.0,
+                "total_branches": null,
+                "l1d_accesses": null,
+                "l1i_accesses": null,
+                "rob_occupancy": null,
+                "iq_utilization": null,
+                "mispred_recovery_cycles": null,
+                "branch_misprediction_rate": 3.347371795139067
+            },
+            "run_2": {
+                "sim_seconds": 0.118317,
+                "committed_instructions": 100020754.0,
+                "ipc": 0.422682,
+                "branch_predicted": 19666922.0,
+                "branch_squashes": 0.0,
+                "branch_mispredicted": 658325.0,
+                "total_branches": null,
+                "l1d_accesses": null,
+                "l1i_accesses": null,
+                "rob_occupancy": null,
+                "iq_utilization": null,
+                "mispred_recovery_cycles": null,
+                "branch_misprediction_rate": 3.347371795139067
+            },
+            "run_3": {
+                "sim_seconds": 0.118317,
+                "committed_instructions": 100020754.0,
+                "ipc": 0.422682,
+                "branch_predicted": 19666922.0,
+                "branch_squashes": 0.0,
+                "branch_mispredicted": 658325.0,
+                "total_branches": null,
+                "l1d_accesses": null,
+                "l1i_accesses": null,
+                "rob_occupancy": null,
+                "iq_utilization": null,
+                "mispred_recovery_cycles": null,
+                "branch_misprediction_rate": 3.347371795139067
+            }
+        },
+        "BasicMath": {
+            "run_1": {
+                "sim_seconds": 0.054848,
+                "committed_instructions": 48834459.0,
+                "ipc": 0.445184,
+                "branch_predicted": 10110388.0,
+                "branch_squashes": 0.0,
+                "branch_mispredicted": 206671.0,
+                "total_branches": null,
+                "l1d_accesses": null,
+                "l1i_accesses": null,
+                "rob_occupancy": null,
+                "iq_utilization": null,
+                "mispred_recovery_cycles": null,
+                "branch_misprediction_rate": 2.044145091167619
+            },
+            "run_2": {
+                "sim_seconds": 0.054848,
+                "committed_instructions": 48834459.0,
+                "ipc": 0.445184,
+                "branch_predicted": 10110388.0,
+                "branch_squashes": 0.0,
+                "branch_mispredicted": 206671.0,
+                "total_branches": null,
+                "l1d_accesses": null,
+                "l1i_accesses": null,
+                "rob_occupancy": null,
+                "iq_utilization": null,
+                "mispred_recovery_cycles": null,
+                "branch_misprediction_rate": 2.044145091167619
+            },
+            "run_3": {
+                "sim_seconds": 0.054848,
+                "committed_instructions": 48834459.0,
+                "ipc": 0.445184,
+                "branch_predicted": 10110388.0,
+                "branch_squashes": 0.0,
+                "branch_mispredicted": 206671.0,
+                "total_branches": null,
+                "l1d_accesses": null,
+                "l1i_accesses": null,
+                "rob_occupancy": null,
+                "iq_utilization": null,
+                "mispred_recovery_cycles": null,
+                "branch_misprediction_rate": 2.044145091167619
+            }
+        }
+    },
+    "GShareBP": {
+        "QSort": {
+            "run_1": {
+                "sim_seconds": 0.118317,
+                "committed_instructions": 100020754.0,
+                "ipc": 0.422682,
+                "branch_predicted": 19666922.0,
+                "branch_squashes": 0.0,
+                "branch_mispredicted": 5420532.0,
+                "total_branches": null,
+                "l1d_accesses": null,
+                "l1i_accesses": null,
+                "rob_occupancy": null,
+                "iq_utilization": null,
+                "mispred_recovery_cycles": null,
+                "branch_misprediction_rate": 27.56166928409031
+            },
+            "run_2": {
+                "sim_seconds": 0.118317,
+                "committed_instructions": 100020754.0,
+                "ipc": 0.422682,
+                "branch_predicted": 19666922.0,
+                "branch_squashes": 0.0,
+                "branch_mispredicted": 5420532.0,
+                "total_branches": null,
+                "l1d_accesses": null,
+                "l1i_accesses": null,
+                "rob_occupancy": null,
+                "iq_utilization": null,
+                "mispred_recovery_cycles": null,
+                "branch_misprediction_rate": 27.56166928409031
+            },
+            "run_3": {
+                "sim_seconds": 0.118317,
+                "committed_instructions": 100020754.0,
+                "ipc": 0.422682,
+                "branch_predicted": 19666922.0,
+                "branch_squashes": 0.0,
+                "branch_mispredicted": 5420532.0,
+                "total_branches": null,
+                "l1d_accesses": null,
+                "l1i_accesses": null,
+                "rob_occupancy": null,
+                "iq_utilization": null,
+                "mispred_recovery_cycles": null,
+                "branch_misprediction_rate": 27.56166928409031
+            }
+        },
+        "BasicMath": {
+            "run_1": {
+                "sim_seconds": 0.054848,
+                "committed_instructions": 48834459.0,
+                "ipc": 0.445184,
+                "branch_predicted": 10110388.0,
+                "branch_squashes": 0.0,
+                "branch_mispredicted": 3194931.0,
+                "total_branches": null,
+                "l1d_accesses": null,
+                "l1i_accesses": null,
+                "rob_occupancy": null,
+                "iq_utilization": null,
+                "mispred_recovery_cycles": null,
+                "branch_misprediction_rate": 31.600478636428196
+            },
+            "run_2": {
+                "sim_seconds": 0.054848,
+                "committed_instructions": 48834459.0,
+                "ipc": 0.445184,
+                "branch_predicted": 10110388.0,
+                "branch_squashes": 0.0,
+                "branch_mispredicted": 3194931.0,
+                "total_branches": null,
+                "l1d_accesses": null,
+                "l1i_accesses": null,
+                "rob_occupancy": null,
+                "iq_utilization": null,
+                "mispred_recovery_cycles": null,
+                "branch_misprediction_rate": 31.600478636428196
+            },
+            "run_3": {
+                "sim_seconds": 0.054848,
+                "committed_instructions": 48834459.0,
+                "ipc": 0.445184,
+                "branch_predicted": 10110388.0,
+                "branch_squashes": 0.0,
+                "branch_mispredicted": 3194931.0,
+                "total_branches": null,
+                "l1d_accesses": null,
+                "l1i_accesses": null,
+                "rob_occupancy": null,
+                "iq_utilization": null,
+                "mispred_recovery_cycles": null,
+                "branch_misprediction_rate": 31.600478636428196
+            }
+        }
+    },
+    "LocalBP": {
+        "QSort": {
+            "run_1": {
+                "sim_seconds": 0.118317,
+                "committed_instructions": 100020754.0,
+                "ipc": 0.422682,
+                "branch_predicted": 19666922.0,
+                "branch_squashes": 0.0,
+                "branch_mispredicted": 1014196.0,
+                "total_branches": null,
+                "l1d_accesses": null,
+                "l1i_accesses": null,
+                "rob_occupancy": null,
+                "iq_utilization": null,
+                "mispred_recovery_cycles": null,
+                "branch_misprediction_rate": 5.156861861759557
+            },
+            "run_2": {
+                "sim_seconds": 0.118317,
+                "committed_instructions": 100020754.0,
+                "ipc": 0.422682,
+                "branch_predicted": 19666922.0,
+                "branch_squashes": 0.0,
+                "branch_mispredicted": 1014196.0,
+                "total_branches": null,
+                "l1d_accesses": null,
+                "l1i_accesses": null,
+                "rob_occupancy": null,
+                "iq_utilization": null,
+                "mispred_recovery_cycles": null,
+                "branch_misprediction_rate": 5.156861861759557
+            },
+            "run_3": {
+                "sim_seconds": 0.118317,
+                "committed_instructions": 100020754.0,
+                "ipc": 0.422682,
+                "branch_predicted": 19666922.0,
+                "branch_squashes": 0.0,
+                "branch_mispredicted": 1014196.0,
+                "total_branches": null,
+                "l1d_accesses": null,
+                "l1i_accesses": null,
+                "rob_occupancy": null,
+                "iq_utilization": null,
+                "mispred_recovery_cycles": null,
+                "branch_misprediction_rate": 5.156861861759557
+            }
+        },
+        "BasicMath": {
+            "run_1": {
+                "sim_seconds": 0.054848,
+                "committed_instructions": 48834459.0,
+                "ipc": 0.445184,
+                "branch_predicted": 10110388.0,
+                "branch_squashes": 0.0,
+                "branch_mispredicted": 403468.0,
+                "total_branches": null,
+                "l1d_accesses": null,
+                "l1i_accesses": null,
+                "rob_occupancy": null,
+                "iq_utilization": null,
+                "mispred_recovery_cycles": null,
+                "branch_misprediction_rate": 3.990628252842522
+            },
+            "run_2": {
+                "sim_seconds": 0.054848,
+                "committed_instructions": 48834459.0,
+                "ipc": 0.445184,
+                "branch_predicted": 10110388.0,
+                "branch_squashes": 0.0,
+                "branch_mispredicted": 403468.0,
+                "total_branches": null,
+                "l1d_accesses": null,
+                "l1i_accesses": null,
+                "rob_occupancy": null,
+                "iq_utilization": null,
+                "mispred_recovery_cycles": null,
+                "branch_misprediction_rate": 3.990628252842522
+            },
+            "run_3": {
+                "sim_seconds": 0.054848,
+                "committed_instructions": 48834459.0,
+                "ipc": 0.445184,
+                "branch_predicted": 10110388.0,
+                "branch_squashes": 0.0,
+                "branch_mispredicted": 403468.0,
+                "total_branches": null,
+                "l1d_accesses": null,
+                "l1i_accesses": null,
+                "rob_occupancy": null,
+                "iq_utilization": null,
+                "mispred_recovery_cycles": null,
+                "branch_misprediction_rate": 3.990628252842522
+            }
+        }
+    },
+    "TournamentBP": {
+        "QSort": {
+            "run_1": {
+                "sim_seconds": 0.118317,
+                "committed_instructions": 100020754.0,
+                "ipc": 0.422682,
+                "branch_predicted": 19666922.0,
+                "branch_squashes": 0.0,
+                "branch_mispredicted": 594010.0,
+                "total_branches": null,
+                "l1d_accesses": null,
+                "l1i_accesses": null,
+                "rob_occupancy": null,
+                "iq_utilization": null,
+                "mispred_recovery_cycles": null,
+                "branch_misprediction_rate": 3.020350617142835
+            },
+            "run_2": {
+                "sim_seconds": 0.118317,
+                "committed_instructions": 100020754.0,
+                "ipc": 0.422682,
+                "branch_predicted": 19666922.0,
+                "branch_squashes": 0.0,
+                "branch_mispredicted": 594010.0,
+                "total_branches": null,
+                "l1d_accesses": null,
+                "l1i_accesses": null,
+                "rob_occupancy": null,
+                "iq_utilization": null,
+                "mispred_recovery_cycles": null,
+                "branch_misprediction_rate": 3.020350617142835
+            },
+            "run_3": {
+                "sim_seconds": 0.118317,
+                "committed_instructions": 100020754.0,
+                "ipc": 0.422682,
+                "branch_predicted": 19666922.0,
+                "branch_squashes": 0.0,
+                "branch_mispredicted": 594010.0,
+                "total_branches": null,
+                "l1d_accesses": null,
+                "l1i_accesses": null,
+                "rob_occupancy": null,
+                "iq_utilization": null,
+                "mispred_recovery_cycles": null,
+                "branch_misprediction_rate": 3.020350617142835
+            }
+        },
+        "BasicMath": {
+            "run_1": {
+                "sim_seconds": 0.054848,
+                "committed_instructions": 48834459.0,
+                "ipc": 0.445184,
+                "branch_predicted": 10110388.0,
+                "branch_squashes": 0.0,
+                "branch_mispredicted": 142162.0,
+                "total_branches": null,
+                "l1d_accesses": null,
+                "l1i_accesses": null,
+                "rob_occupancy": null,
+                "iq_utilization": null,
+                "mispred_recovery_cycles": null,
+                "branch_misprediction_rate": 1.4060983614080884
+            },
+            "run_2": {
+                "sim_seconds": 0.054848,
+                "committed_instructions": 48834459.0,
+                "ipc": 0.445184,
+                "branch_predicted": 10110388.0,
+                "branch_squashes": 0.0,
+                "branch_mispredicted": 142162.0,
+                "total_branches": null,
+                "l1d_accesses": null,
+                "l1i_accesses": null,
+                "rob_occupancy": null,
+                "iq_utilization": null,
+                "mispred_recovery_cycles": null,
+                "branch_misprediction_rate": 1.4060983614080884
+            },
+            "run_3": {
+                "sim_seconds": 0.054848,
+                "committed_instructions": 48834459.0,
+                "ipc": 0.445184,
+                "branch_predicted": 10110388.0,
+                "branch_squashes": 0.0,
+                "branch_mispredicted": 142162.0,
+                "total_branches": null,
+                "l1d_accesses": null,
+                "l1i_accesses": null,
+                "rob_occupancy": null,
+                "iq_utilization": null,
+                "mispred_recovery_cycles": null,
+                "branch_misprediction_rate": 1.4060983614080884
+            }
+        }
+    }
+}

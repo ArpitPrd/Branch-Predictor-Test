@@ -1,7 +1,7 @@
 {
   "processor_type": "SIMPLE",
   "cpu_type": "O3",
-  "num_cores": 4,
+  "num_cores": 1,
   "isa_type": "X86",
   "mem_type": "DDR3",
   "mem_size": "2GiB",
@@ -9,6 +9,6 @@
   "cpu_freq": "600MHz",
   "binary_filename": "mm",
   "type_of_workload": "SE",
-  "bp_type": "tournament",
+  "bp_type": "bimode",
   "mode": "a"
 }
